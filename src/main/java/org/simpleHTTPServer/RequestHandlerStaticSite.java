@@ -1,5 +1,6 @@
 package org.simpleHTTPServer;
 
+import javax.activation.MimetypesFileTypeMap;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.URI;
@@ -15,7 +16,7 @@ import java.util.Date;
 /**
  * Handle HTTP requests by serving fiels from the local filesystem.
  * Given a root directory, files corresponding to the URI are sent to the client.
- *   
+ *
  * @author vorburger
  * @author romain
  */
@@ -70,7 +71,7 @@ class RequestHandlerStaticSite extends RequestHandlerHTTP10 {
 
     private static void handleFile(File file, HTTPResponse response) throws IOException {
         String filename = file.getName().toLowerCase();
-        String contentType = URLConnection.getFileNameMap().getContentTypeFor(filename);
+        String contentType = getContentType(filename);
         response.setContentType(contentType);
 
         long length = file.length();
@@ -92,6 +93,16 @@ class RequestHandlerStaticSite extends RequestHandlerHTTP10 {
             os.close();
         } catch (FileNotFoundException ex) {
             throw new IOException("File " + file + " not found.", ex);
+        }
+    }
+
+    private static String getContentType(String filename) {
+        if (filename.endsWith(".js")) {
+            return "application/javascript";
+        } else if (filename.endsWith(".css")) {
+            return "text/css";
+        } else {
+            return new MimetypesFileTypeMap().getContentType(filename);
         }
     }
 

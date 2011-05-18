@@ -5,6 +5,7 @@
 package org.simpleHTTPServer;
 
 import java.io.File;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,7 +14,6 @@ import org.simpleHTTPClient.HTTPResponse;
 import org.simpleHTTPClient.SimpleHTTPClient;
 
 /**
- *
  * @author romain
  */
 public class SimpleHTTPServerTest {
@@ -67,6 +67,29 @@ public class SimpleHTTPServerTest {
         Assert.assertTrue(get.getContentType().startsWith("text/html"));
         Assert.assertTrue(get.getContent().contains("<html>"));
     }
+
+    @Test
+    public void testReadingJavascript() {
+        //execute
+        HTTPResponse get = SimpleHTTPClient.get("http://localhost:8000/js.js");
+
+        //check
+        Assert.assertEquals(get.getStatus(), 200);
+        System.out.println(get.getContentType());
+        Assert.assertTrue(get.getContentType().startsWith("application/javascript"));
+    }
+
+    @Test
+    public void testReadingCss() {
+        //execute
+        HTTPResponse get = SimpleHTTPClient.get("http://localhost:8000/css.css");
+
+        //check
+        Assert.assertEquals(get.getStatus(), 200);
+        System.out.println(get.getContentType());
+        Assert.assertTrue(get.getContentType().startsWith("text/css"));
+    }
+
 
     @Test
     public void testReadingText() {
