@@ -24,6 +24,8 @@
 
 package org.simpleHTTPServer;
 
+import static org.junit.Assert.fail;
+
 import java.io.File;
 import java.io.PrintWriter;
 import java.net.InetAddress;
@@ -32,7 +34,6 @@ import java.net.SocketTimeoutException;
 
 import org.junit.After;
 import org.junit.Before;
-import static org.junit.Assert.*;
 
 public class ServerMultiThreadedWorkersTestCase {
 

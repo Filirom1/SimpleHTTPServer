@@ -24,7 +24,8 @@
 
 package org.simpleHTTPServer;
 
-import org.junit.Test;
+import static org.junit.Assert.fail;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,7 +34,7 @@ import java.net.Socket;
 
 import org.junit.After;
 import org.junit.Before;
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 public class ServerSingleThreadedWorkerTestCase {
 

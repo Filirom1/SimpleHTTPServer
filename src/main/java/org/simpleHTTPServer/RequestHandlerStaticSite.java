@@ -24,18 +24,17 @@
 
 package org.simpleHTTPServer;
 
-import javax.activation.MimetypesFileTypeMap;
-import java.io.PrintWriter;
-import java.net.Socket;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.URLConnection;
-import java.util.Date;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import javax.activation.MimetypesFileTypeMap;
 
 /**
  * Handle HTTP requests by serving fiels from the local filesystem.
